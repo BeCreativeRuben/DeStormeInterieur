@@ -22,7 +22,7 @@ export default function HomePage() {
             sizes="100vw"
           />
         ) : null}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent" />
         <div className="relative mx-auto w-full max-w-6xl px-5 pb-16 pt-32 text-white sm:px-8 sm:pb-20">
           <p className="text-[0.65rem] font-medium uppercase tracking-[0.4em] text-white/80">
             {site.tagline}
@@ -31,7 +31,7 @@ export default function HomePage() {
             Interieur met rust, licht en precisie
           </h1>
           <p className="mt-5 max-w-md text-sm leading-relaxed text-white/85 sm:text-base">
-            Interieurdesign voor woningen en projecten in België — van concept tot
+            Interieurdesign voor woningen en projecten in België van concept tot
             afwerking, met oog voor materiaal en dagelijks comfort.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
@@ -87,24 +87,24 @@ export default function HomePage() {
           <SectionTitle
             eyebrow="Werkwijze"
             title="Zo werken we samen"
-            intro="Een helder traject: eerst verkennen, dan ontwerpen, daarna opvolgen tot de laatste detail."
+            intro="Van eerste idee tot uitgewerkt ontwerp: een duidelijk traject met focus op indeling, materiaal en detail."
           />
           <ol className="space-y-10">
             {[
               {
                 step: "01",
                 title: "Kennismaking",
-                text: "We bezoeken je ruimte of starten met een call: scope, timing en verwachtingen.",
+                text: "We starten met een gesprek of plaatsbezoek en bekijken samen de ruimtelijke wensen en mogelijkheden.",
               },
               {
                 step: "02",
                 title: "Concept & keuzes",
-                text: "Ruimtelijke lijn, mood en materialen worden scherp voordat er besteld wordt.",
+                text: "We vertalen het idee naar een concreet ontwerp met duidelijke indeling, materialen en sfeer.",
               },
               {
                 step: "03",
                 title: "Realisatie",
-                text: "Opvolging op de werf en leveranciers tot styling en oplevering.",
+                text: "We volgen het project op tot de laatste afwerking, van uitvoering tot styling en oplevering.",
               },
             ].map((s) => (
               <li key={s.step} className="flex gap-6">
@@ -122,7 +122,7 @@ export default function HomePage() {
           </ol>
           <div className="sm:col-span-2">
             <ButtonLink href="/aanpak" variant="secondary">
-              Lees de volledige aanpak
+              Ontdek onze aanpak
             </ButtonLink>
           </div>
         </div>
@@ -141,17 +141,16 @@ export default function HomePage() {
           </div>
           <div>
             <SectionTitle
-              eyebrow="Studio"
               title="Over DESTORME DESIGN"
-              intro="Het atelier van Rens De Storme. We ontwerpen interieurs die rust uitstralen: minder decoratie, meer samenhang — zodat het interieur blijft werken als je er woont."
+              intro="DESTORME DESIGN is de interieurstudio van Rens De Storme, gericht op doordachte en rustige interieurs. Minder ruis, meer samenhang, zodat een ruimte niet alleen mooi is, maar ook blijft werken in het dagelijks gebruik."
             />
             <p className="mt-6 text-sm leading-relaxed text-muted sm:text-base">
-              Elk traject is maatwerk. We combineren vakkennis met luisteren naar hoe je
-              dagelijks leeft.
+              Elk project vertrekt vanuit de manier waarop je leeft. We vertalen dit
+              naar een helder ontwerp met aandacht voor indeling, materialen en detail.
             </p>
             <div className="mt-8">
               <ButtonLink href="/over" variant="secondary">
-                Meer over Rens
+                Maak kennis
               </ButtonLink>
             </div>
           </div>
@@ -162,15 +161,15 @@ export default function HomePage() {
         <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-8 sm:flex-row sm:items-center">
           <div>
             <h2 className="font-semibold uppercase tracking-[0.18em] text-lg">
-              Een volgend project?
+              Klaar voor een nieuw project?
             </h2>
             <p className="mt-2 max-w-lg text-sm text-white/75">
-              Vertel kort waar je staat — renovatie, nieuwbouw of advies. We bekijken
-              samen of er een match is.
+              Werk je aan een renovatie, nieuwbouw of interieurproject? Vertel kort je
+              plannen, we bekijken samen of we de juiste match zijn.
             </p>
           </div>
           <ButtonLink href="/contact" variant="primary">
-            Start het gesprek
+            Start je project
           </ButtonLink>
         </div>
       </section>

@@ -6,7 +6,7 @@ export const site = {
   tagline: "Interior design studio",
   description:
     "Interieurdesign met aandacht voor ruimte, licht en materialen. Studio van Rens De Storme, België.",
-  email: "rens.destorme@outlook.com",
+  email: "destormedesign@outlook.com",
   phoneDisplay: "+32 496 25 86 99",
   phoneTel: "+32496258699",
   instagram: "https://www.instagram.com/destormedesign/",

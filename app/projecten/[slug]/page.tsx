@@ -62,6 +62,9 @@ export default async function ProjectPage({ params }: Props) {
           <p>{project.context.challenge}</p>
           <p>{project.context.approach}</p>
           <p>{project.context.result}</p>
+          {project.collaboration ? (
+            <p className="font-medium text-foreground/80">{project.collaboration}</p>
+          ) : null}
         </div>
       </div>
 

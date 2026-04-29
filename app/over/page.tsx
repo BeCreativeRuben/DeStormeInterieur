@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { ButtonLink } from "@/components/ButtonLink";
 import { projects } from "@/lib/projects";
 import { site } from "@/lib/site";
@@ -35,15 +34,16 @@ export default function OverPage() {
           </h1>
           <div className="mt-8 space-y-6 text-sm leading-relaxed text-muted sm:text-base">
             <p>
-              DESTORME DESIGN is het interieuratelier van{" "}
-              <strong className="font-medium text-foreground">Rens De Storme</strong>.
-              Het werk vertrekt vanuit architecturale rust: heldere volumes, eerlijke
-              materialen en licht als dragende laag.
+              DESTORME DESIGN is een interieurstudio van Rens De Storme.
             </p>
             <p>
-              Elk traject is maatwerk. We combineren vakkennis met luisteren naar hoe je
-              dagelijks leeft — zodat het interieur niet alleen goed fotografeert, maar
-              vooral blijft werken als je er woont.
+              We ontwerpen interieurs met focus op rust, heldere lijnen en doordachte
+              materiaalkeuzes.
+            </p>
+            <p>
+              Elk project is maatwerk. We combineren ontwerpkennis met inzicht in hoe je
+              dagelijks leeft, zodat een interieur niet alleen mooi oogt, maar ook echt
+              werkt.
             </p>
           </div>
 
@@ -51,15 +51,15 @@ export default function OverPage() {
             Visie in het kort
           </h2>
           <ul className="mt-4 space-y-3 text-sm text-muted sm:text-base">
-            <li>— Minder trends, meer tijdloos samenspel van ruimte en detail.</li>
-            <li>— Design als investering in dagelijks comfort.</li>
+            <li>Minder trends, meer tijdloze rust en samenhang.</li>
+            <li>Interieur als investering in dagelijks comfort.</li>
           </ul>
 
           <h2 className="mt-12 font-semibold uppercase tracking-[0.12em] text-sm">
             Meer beeld & updates
           </h2>
           <p className="mt-3 text-sm text-muted">
-            Volg het studio op{" "}
+            Volg Destorme Design op{" "}
             <a
               href={site.instagram}
               target="_blank"
@@ -73,20 +73,13 @@ export default function OverPage() {
 
           <div className="mt-10 flex flex-wrap gap-4">
             <ButtonLink href="/projecten" variant="secondary">
-              Bekijk projecten
+              Bekijk realisaties
             </ButtonLink>
-            <ButtonLink href="/contact">Neem contact op</ButtonLink>
+            <ButtonLink href="/contact">Plan een kennismaking</ButtonLink>
           </div>
         </div>
       </div>
 
-      <p className="mt-16 text-center text-xs text-muted">
-        Tip: vervang de beeldplaceholder op deze pagina door een professionele
-        portretfoto.{" "}
-        <Link href="/contact" className="underline-offset-2 hover:underline">
-          Vraag desnoods raad bij je fotograaf.
-        </Link>
-      </p>
     </div>
   );
 }

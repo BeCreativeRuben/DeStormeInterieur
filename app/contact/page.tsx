@@ -20,8 +20,10 @@ export default function ContactPage() {
             Contact
           </h1>
           <p className="mt-6 text-sm leading-relaxed text-muted sm:text-base">
-            Stuur een korte beschrijving van je project. We lezen elke aanvraag zelf en
-            antwoorden binnen <strong className="font-medium text-foreground">twee werkdagen</strong>.
+            Vertel kort over je project en je wensen. We bekijken elke aanvraag persoonlijk
+            en geven binnen{" "}
+            <strong className="font-medium text-foreground">twee werkdagen</strong> een
+            eerste reactie.
           </p>
 
           <div className="mt-10 space-y-6 border-l-2 border-accent pl-6">

@@ -20,9 +20,8 @@ export default function ProjectenPage() {
           Projecten
         </h1>
         <p className="mt-5 text-sm leading-relaxed text-muted sm:text-base">
-          Elk project wordt met dezelfde precisie benaderd: van ruimtelijke logica tot
-          tactiele afwerking. Hieronder een selectie — beelden ter illustratie, vervang
-          door eigen fotografie zodra beschikbaar.
+          Elk project vertrekt vanuit een doordachte indeling en wordt uitgewerkt tot in
+          materiaal en detail.
         </p>
       </header>
 

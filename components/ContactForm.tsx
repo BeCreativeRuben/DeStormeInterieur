@@ -151,7 +151,7 @@ export function ContactForm() {
           name="message"
           rows={5}
           className="resize-y border border-black/15 bg-background px-3 py-2.5 text-foreground outline-none focus:border-foreground/40"
-          placeholder="Korte context over je woning, timing of inspiratie (bv. link naar Pinterest)."
+          placeholder="Beschrijf kort je project, de ruimte en wat je zoekt. Eventueel met referenties of inspiratie."
         />
       </label>
 

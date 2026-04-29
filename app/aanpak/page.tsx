@@ -11,32 +11,32 @@ export const metadata: Metadata = {
 const services = [
   {
     title: "Interieurconcept & ruimtelijke organisatie",
-    text: "Zithoeken, circulatie, ingebouwde kasten en verhoudingen: een helder plan voordat materialen gekozen worden.",
+    text: "We starten vanuit indeling en verhoudingen: een helder plan waarin circulatie, functies en maatwerk samenkomen.",
   },
   {
     title: "Materialen & kleur",
-    text: "Een beperkt palet met tactiele kwaliteit — duurzaam waar het kan, visueel rustig waar het moet.",
+    text: "We werken met een doordacht palet van materialen en kleuren: tactiel, rustig en duurzaam waar het kan.",
   },
   {
     title: "Verlichtingsplan",
-    text: "Sfeer én taakverlichting als onderdeel van het geheel, afgestemd op hoe je de ruimte gebruikt.",
+    text: "Verlichting wordt integraal meegenomen: sfeer en functionaliteit afgestemd op het gebruik van de ruimte.",
   },
   {
     title: "Begeleiding realisatie",
-    text: "Afstemming met aannemers en leveranciers zodat het ontwerp correct wordt uitgevoerd.",
+    text: "We stemmen af met aannemers en leveranciers en volgen het ontwerp op tot een correcte uitvoering.",
   },
   {
     title: "Styling & eindfase",
-    text: "De laatste laag: textiel, kunst en objecten die het interieur afmaken zonder drukte.",
+    text: "De laatste laag: textiel, kunst en objecten die het interieur afwerken zonder overdaad.",
   },
 ] as const;
 
 const steps = [
-  "Kennismaking — bezoek of call; scope, timing en verwachtingen.",
-  "Voorstel & offerte — duidelijke scope: wat zit er wel en niet in.",
-  "Ontwerp & keuzes — plannen, visuals en materialen waar nodig.",
-  "Bestelling & opvolging — timing en coördinatie op de werf.",
-  "Oplevering — afronden, nazorg en styling.",
+  "Kennismaking — we bespreken je project, de ruimte en je verwachtingen.",
+  "Voorstel & offerte — een helder overzicht van de aanpak en wat inbegrepen is.",
+  "Ontwerp & keuzes — we werken het ontwerp uit met plannen, visualisaties en materiaalkeuzes.",
+  "Bestelling & opvolging — coördinatie met leveranciers en opvolging van de uitvoering.",
+  "Oplevering — afronding van het project met aandacht voor detail en styling.",
 ] as const;
 
 export default function AanpakPage() {
@@ -50,16 +50,16 @@ export default function AanpakPage() {
           Aanpak & diensten
         </h1>
         <p className="mt-5 text-sm leading-relaxed text-muted sm:text-base">
-          Zo werkt samenwerken met het studio: transparant in stappen, met ruimte voor
-          dialoog over budget en prioriteiten.
+          Samenwerken met de studio verloopt in duidelijke stappen, met aandacht voor
+          ontwerp, budget en prioriteiten.
         </p>
       </header>
 
       <section className="mt-20 border-t border-black/10 pt-16">
         <SectionTitle
           eyebrow="Aanbod"
-          title="Wat we voor je kunnen doen"
-          intro="Afhankelijk van je vraag combineren we onderdelen — van enkel concept tot volledige begeleiding."
+          title="Wat we voor je kunnen betekenen"
+          intro="Afhankelijk van je vraag werken we op maat, van een sterk concept tot volledige begeleiding van het project."
         />
         <ul className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s) => (
@@ -77,7 +77,7 @@ export default function AanpakPage() {
         <SectionTitle
           eyebrow="Traject"
           title="Hoe een traject verloopt"
-          intro="Geen verrassingen in de volgorde: eerst verankeren we de basis, daarna werken we naar detail en oplevering."
+          intro="Een duidelijk traject, van eerste gesprek tot oplevering. Stap voor stap werken we naar een doordacht en afgewerkt interieur."
         />
         <ol className="mt-12 max-w-2xl space-y-6">
           {steps.map((text, i) => (
@@ -92,18 +92,18 @@ export default function AanpakPage() {
       </section>
 
       <section className="mt-24 border-t border-black/10 pt-16">
-        <SectionTitle title="Wat we van jou verwachten" />
+        <SectionTitle title="Praktische afspraken" />
         <ul className="mt-8 max-w-2xl list-disc space-y-3 pl-5 text-sm text-muted sm:text-base">
-          <li>Beslissingsmomenten binnen de afgesproken termijn.</li>
-          <li>Toegang tot de woning en bouwplannen waar nodig.</li>
-          <li>Open communicatie over budget en prioriteiten.</li>
+          <li>Beslissingen worden tijdig genomen binnen de afgesproken planning.</li>
+          <li>Toegang tot de woning en relevante plannen wordt voorzien waar nodig.</li>
+          <li>Open communicatie over budget en prioriteiten vormt de basis.</li>
         </ul>
       </section>
 
       <section className="mt-24 border-t border-black/10 pt-16">
-        <SectionTitle title="Werkgebied" intro="Voornamelijk in België (Vlaanderen en Brussel). Op aanvraag buiten de regio in overleg." />
+        <SectionTitle title="Werkgebied" intro="Werkgebied voornamelijk België (Vlaanderen en Brussel). Projecten buiten deze regio zijn mogelijk in overleg." />
         <div className="mt-10">
-          <ButtonLink href="/contact">Vraag een kennismaking aan</ButtonLink>
+          <ButtonLink href="/contact">Plan een kennismaking</ButtonLink>
         </div>
       </section>
     </div>

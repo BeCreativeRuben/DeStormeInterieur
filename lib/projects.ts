@@ -12,82 +12,114 @@ export type Project = {
     approach: string;
     result: string;
   };
+  collaboration?: string;
 };
-
-/** Placeholder beelden — vervang door eigen projectfotografie. */
-const u = (id: string, sig?: string) =>
-  `https://images.unsplash.com/${id}${sig ? `?${sig}` : ""}`;
 
 export const projects: Project[] = [
   {
-    slug: "woning-antwerpen",
-    title: "Woning Antwerpen",
-    location: "Antwerpen",
-    type: "Volledige inrichting · woning",
-    year: "2024",
+    slug: "maatwerk-bureau",
+    title: "Maatwerk Bureau",
+    location: "Belgie",
+    type: "Maatwerk - bureau",
+    year: "2026",
     excerpt:
-      "Renovatie met open leefruimte, warme materialen en ingetogen kleur.",
-    hero: u("photo-1600607687939-ce8a6c25118c", "auto=format&fit=crop&w=2000&q=80"),
+      "Een rustige werkplek met voldoende opbergruimte, zonder visuele drukte.",
+    hero: "/projects/bureau/hero.png",
     gallery: [
-      u("photo-1600607687939-ce8a6c25118c", "auto=format&fit=crop&w=1600&q=80"),
-      u("photo-1600585154526-990dced4db0d", "auto=format&fit=crop&w=1600&q=80"),
-      u("photo-1600210492486-724fe5c67fb0", "auto=format&fit=crop&w=1600&q=80"),
-      u("photo-1600566753086-00f18fb6b3ea", "auto=format&fit=crop&w=1600&q=80"),
+      "/projects/bureau/hero.png",
+      "/projects/bureau/02.png",
+      "/projects/bureau/03.png",
+      "/projects/bureau/04.png",
+      "/projects/bureau/05.png",
+      "/projects/bureau/06.png",
     ],
     context: {
       challenge:
-        "De woning voelde versnipperd: donkere doorgangen en weinig natuurlijk licht in de kern van het plan.",
+        "De vraag was een rustige werkplek met voldoende opbergruimte, zonder visuele drukte.",
       approach:
-        "We openden de keuken naar de leefruimte, herwerkten de vloerlijn en koos een beperkt materiaalpalet met tactiele texturen.",
+        "We ontwierpen een maatwerk bureau geintegreerd in een wand van donkere fineer, gecombineerd met een natuursteen blad voor contrast en tactiliteit.",
       result:
-        "Eén rustige leefzone met zichtlijnen naar buiten — functioneel voor gezinsleven, kalm in uitstraling.",
+        "Open nissen en indirecte verlichting brengen ritme en diepte in het geheel, terwijl de gesloten kasten zorgen voor rust en orde. Een compacte maar doordachte werkruimte: functioneel in gebruik en rustig in uitstraling.",
     },
   },
   {
-    slug: "appartement-gent",
-    title: "Appartement Gent",
-    location: "Gent",
-    type: "Interieurconcept · appartement",
-    year: "2023",
-    excerpt: "Compact stadsappartement met maatwerk en slimme kastenwand.",
-    hero: u("photo-1600585154340-be6161a56a0c", "auto=format&fit=crop&w=2000&q=80"),
+    slug: "opfrissing-batoo-kuurne",
+    title: "Opfrissing Batoo Kuurne",
+    location: "Kuurne",
+    type: "Opfrissing - hospitality",
+    year: "2026",
+    excerpt:
+      "Een nieuwe zitzone die sfeer en privacy brengt zonder de ruimte af te sluiten.",
+    hero: "/projects/batoo/hero.png",
     gallery: [
-      u("photo-1600585154340-be6161a56a0c", "auto=format&fit=crop&w=1600&q=80"),
-      u("photo-1600573472550-8090b5e0745e", "auto=format&fit=crop&w=1600&q=80"),
-      u("photo-1600047509807-ba8f99d2cd3a", "auto=format&fit=crop&w=1600&q=80"),
-      u("photo-1600121848594-d8644e57abab", "auto=format&fit=crop&w=1600&q=80"),
+      "/projects/batoo/hero.png",
+      "/projects/batoo/01.png",
+      "/projects/batoo/02.png",
+      "/projects/batoo/05.png",
     ],
     context: {
       challenge:
-        "Beperkte oppervlakte en bestaande technische leidingen beperkten ingrepen in de structuur.",
+        "Voor Batoo in Kuurne werd een nieuwe zitzone ontworpen die zowel sfeer als privacy brengt binnen de ruimte.",
       approach:
-        "Ruimtelijk meubilair en één sterke materiaallijn (hout + minerale tint) om de diepte visueel te verlengen.",
+        "Centraal staat een doorlopende maatwerk zitbank, gecombineerd met een roomdivider in touwen, als subtiele verwijzing naar het karakter van de zaak.",
       result:
-        "Meer opbergruimte zonder visuele drukte; het appartement oogt groter en rustiger.",
+        "De ingreep structureert de ruimte zonder ze af te sluiten: open waar nodig, intiem waar gewenst. Warme houttinten, zachte stoffering en geintegreerde beplanting versterken de gezellige, ontspannen sfeer.",
     },
+    collaboration: "Ontwerp gerealiseerd in samenwerking met schrijnwerker BOB.",
   },
   {
-    slug: "strandhuis-nieuwpoort",
-    title: "Strandhuis Nieuwpoort",
-    location: "Nieuwpoort",
-    type: "Renovatie · vakantiewoning",
-    year: "2024",
-    excerpt: "Licht interieur met robuuste afwerking tegen zand en vocht.",
-    hero: u("photo-1600566753190-17f0baa2a6c3", "auto=format&fit=crop&w=2000&q=80"),
+    slug: "zolderrenovatie",
+    title: "Zolderrenovatie",
+    location: "Belgie",
+    type: "Renovatie - zolder",
+    year: "2026",
+    excerpt:
+      "Een rustige multifunctionele zolder met maatwerk op maat van het schuine dak.",
+    hero: "/projects/zolder/05.png",
     gallery: [
-      u("photo-1600566753190-17f0baa2a6c3", "auto=format&fit=crop&w=1600&q=80"),
-      u("photo-1600585152915-d0becacc9958", "auto=format&fit=crop&w=1600&q=80"),
-      u("photo-1600607687644-c7171b424da3", "auto=format&fit=crop&w=1600&q=80"),
-      u("photo-1600585154363-67eb9e2d209c", "auto=format&fit=crop&w=1600&q=80"),
+      "/projects/zolder/05.png",
+      "/projects/zolder/10.png",
+      "/projects/zolder/06.png",
+      "/projects/zolder/03.png",
+      "/projects/zolder/07.png",
+      "/projects/zolder/04.png",
     ],
     context: {
       challenge:
-        "Combinatie van onderhoudsgemak, sfeer en een omgeving met veel licht en reflectie op zee.",
+        "Voor deze zolderruimte werd een functioneel en rustig geheel ontworpen, afgestemd op meerdere gebruiksscenario's.",
       approach:
-        "Duurzame, eenvoudig te reinigen materialen en zachte neutrals met één accent in textiel en kunst.",
+        "Door maatwerk kasten te integreren in de schuine dakvlakken wordt de beschikbare ruimte maximaal benut, zonder visuele drukte te creeren. De ruimte combineert een werkzone voor twee personen, opbergruimte en een compacte fitnesshoek.",
       result:
-        "Een tweede verblijf dat ontspannen aanvoelt — minder styling, meer leefcomfort het hele jaar door.",
+        "Warme houtaccenten en zachte, neutrale tinten zorgen voor een gebalanceerde en aangename sfeer onder het dak.",
     },
+    collaboration: "Ontwerp gerealiseerd in samenwerking met schrijnwerker BOB.",
+  },
+  {
+    slug: "renovatie-badkamer",
+    title: "Renovatie Badkamer",
+    location: "Harelbeke",
+    type: "Renovatie - badkamer",
+    year: "2026",
+    excerpt:
+      "Een tijdloze badkamer met ton-sur-ton kleuren en maatwerk in compacte ruimte.",
+    hero: "/projects/badkamer/new-03.png",
+    gallery: [
+      "/projects/badkamer/new-03.png",
+      "/projects/badkamer/new-01.png",
+      "/projects/badkamer/new-02.png",
+      "/projects/badkamer/new-06.png",
+      "/projects/badkamer/new-04.png",
+      "/projects/badkamer/new-05.png",
+    ],
+    context: {
+      challenge:
+        "Voor deze badkamer werd gezocht naar een rustige en tijdloze inrichting binnen een compacte ruimte.",
+      approach:
+        "We werkten met een licht, ton-sur-ton kleurenpalet in combinatie met warme houtaccenten om sfeer en zachtheid te creeren. De inloopdouche met glaswand houdt de ruimte visueel open, terwijl het maatwerk meubel zorgt voor voldoende opbergruimte zonder zwaar te ogen.",
+      result:
+        "Indirecte verlichting en geintegreerde spiegelkasten versterken het gevoel van rust en gebruiksgemak.",
+    },
+    collaboration: "Ontwerp uitgewerkt in samenwerking met Projectplan C.",
   },
 ];
 
