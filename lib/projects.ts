@@ -27,11 +27,10 @@ export const projects: Project[] = [
     hero: "/projects/bureau/hero.png",
     gallery: [
       "/projects/bureau/hero.png",
-      "/projects/bureau/02.png",
       "/projects/bureau/03.png",
-      "/projects/bureau/04.png",
-      "/projects/bureau/05.png",
+      "/projects/bureau/02.png",
       "/projects/bureau/06.png",
+      "/projects/bureau/05.png",
     ],
     context: {
       challenge:

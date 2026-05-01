@@ -34,7 +34,7 @@ export default function OverPage() {
           </h1>
           <div className="mt-8 space-y-6 text-sm leading-relaxed text-muted sm:text-base">
             <p>
-              DESTORME DESIGN is een interieurstudio van Rens De Storme.
+              DESTORME DESIGN is een interieurstudio van Rens Destorme.
             </p>
             <p>
               We ontwerpen interieurs met focus op rust, heldere lijnen en doordachte
