@@ -13,6 +13,11 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  icons: {
+    icon: [{ url: "/brand-mark.png", type: "image/png" }],
+    shortcut: "/brand-mark.png",
+    apple: "/brand-mark.png",
+  },
   title: {
     default: `${site.title} — ${site.tagline}`,
     template: `%s | ${site.title}`,
