@@ -142,7 +142,7 @@ export default function HomePage() {
           <div>
             <SectionTitle
               title="Over DESTORME DESIGN"
-              intro="DESTORME DESIGN is de interieurstudio van Rens De Storme, gericht op doordachte en rustige interieurs. Minder ruis, meer samenhang, zodat een ruimte niet alleen mooi is, maar ook blijft werken in het dagelijks gebruik."
+              intro="DESTORME DESIGN is de interieurstudio van Rens Destorme, gericht op doordachte en rustige interieurs. Minder ruis, meer samenhang, zodat een ruimte niet alleen mooi is, maar ook blijft werken in het dagelijks gebruik."
             />
             <p className="mt-6 text-sm leading-relaxed text-muted sm:text-base">
               Elk project vertrekt vanuit de manier waarop je leeft. We vertalen dit

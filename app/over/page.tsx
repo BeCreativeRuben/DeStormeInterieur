@@ -5,9 +5,9 @@ import { projects } from "@/lib/projects";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Over Rens De Storme",
+  title: "Over Rens Destorme",
   description:
-    "Achter DESTORME DESIGN staat Rens De Storme: interieurdesign met een rustige, architecturale signatuur in België.",
+    "Achter DESTORME DESIGN staat Rens Destorme: interieurdesign met een rustige, architecturale signatuur in België.",
 };
 
 export default function OverPage() {

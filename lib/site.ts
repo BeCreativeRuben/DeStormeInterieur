@@ -5,7 +5,7 @@ export const site = {
   title: "DESTORME DESIGN",
   tagline: "Interior design studio",
   description:
-    "Interieurdesign met aandacht voor ruimte, licht en materialen. Studio van Rens De Storme, België.",
+    "Interieurdesign met aandacht voor ruimte, licht en materialen. Studio van Rens Destorme, België.",
   email: "destormedesign@outlook.com",
   phoneDisplay: "+32 496 25 86 99",
   phoneTel: "+32496258699",
