@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/ContactForm";
+import { CopyEmail } from "@/components/CopyEmail";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -31,12 +32,11 @@ export default function ContactPage() {
               <p className="text-[0.65rem] font-medium uppercase tracking-[0.25em] text-muted">
                 E-mail
               </p>
-              <a
-                href={`mailto:${site.email}`}
-                className="mt-1 inline-block text-sm font-medium text-foreground underline-offset-4 hover:underline"
-              >
-                {site.email}
-              </a>
+              <p className="mt-1 text-xs text-muted">
+                Aanvragen lopen via het formulier hiernaast. Dit adres kun je kopiëren voor
+                ander contact.
+              </p>
+              <CopyEmail email={site.email} className="mt-2" />
             </div>
             <div>
               <p className="text-[0.65rem] font-medium uppercase tracking-[0.25em] text-muted">

@@ -18,38 +18,67 @@ const timings = [
 ] as const;
 
 export function ContactForm() {
-  const [sent, setSent] = useState(false);
+  const [state, setState] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [error, setError] = useState<string | null>(null);
+  const [partialWarning, setPartialWarning] = useState<string | null>(null);
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setError(null);
+    setPartialWarning(null);
+    setState("sending");
+
     const form = e.currentTarget;
     const data = new FormData(form);
-    const name = String(data.get("name") ?? "").trim();
-    const email = String(data.get("email") ?? "").trim();
-    const phone = String(data.get("phone") ?? "").trim();
-    const projectType = String(data.get("projectType") ?? "");
-    const location = String(data.get("location") ?? "").trim();
-    const timing = String(data.get("timing") ?? "");
-    const message = String(data.get("message") ?? "").trim();
+    const payload = {
+      name: String(data.get("name") ?? "").trim(),
+      email: String(data.get("email") ?? "").trim(),
+      phone: String(data.get("phone") ?? "").trim(),
+      projectType: String(data.get("projectType") ?? ""),
+      location: String(data.get("location") ?? "").trim(),
+      timing: String(data.get("timing") ?? ""),
+      message: String(data.get("message") ?? "").trim(),
+      privacy: data.get("privacy") === "on",
+      _hp: String(data.get("_hp") ?? ""),
+    };
 
-    const subject = encodeURIComponent(`Website: aanvraag van ${name || "bezoeker"}`);
-    const body = encodeURIComponent(
-      [
-        `Naam: ${name}`,
-        `E-mail: ${email}`,
-        phone ? `Telefoon: ${phone}` : null,
-        `Type project: ${projectType}`,
-        `Locatie: ${location}`,
-        `Timing: ${timing}`,
-        "",
-        message,
-      ]
-        .filter(Boolean)
-        .join("\n"),
-    );
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const json = (await res.json().catch(() => ({}))) as {
+        ok?: boolean;
+        error?: string;
+        partial?: boolean;
+      };
 
-    window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
-    setSent(true);
+      if (res.ok && json.ok) {
+        setState("sent");
+        form.reset();
+        return;
+      }
+
+      if (res.status === 207 && json.error) {
+        setPartialWarning(json.error);
+        setState("sent");
+        form.reset();
+        return;
+      }
+
+      if (json.error) {
+        setError(json.error);
+        setState("error");
+        return;
+      }
+
+      setError("Er ging iets mis. Probeer later opnieuw.");
+      setState("error");
+    } catch {
+      setError("Geen verbinding. Controleer je netwerk en probeer opnieuw.");
+      setState("error");
+    }
   }
 
   return (
@@ -57,16 +86,61 @@ export function ContactForm() {
       onSubmit={onSubmit}
       className="grid gap-6 border border-black/10 bg-surface p-6 sm:p-8"
     >
-      {sent ? (
-        <p className="text-sm text-muted" role="status">
-          Je e-mailprogramma opent met een voorbereid bericht. Verstuur de mail om
-          je aanvraag te verzenden. Liever direct contact? Bel{" "}
-          <a className="text-foreground underline" href={`tel:${site.phoneTel}`}>
-            {site.phoneDisplay}
-          </a>
-          .
+      {state === "sent" ? (
+        <>
+          <p className="text-sm text-muted" role="status">
+            {partialWarning ? (
+              <>
+                Bedankt. Je aanvraag is verwerkt. Zie hieronder voor een korte opmerking. Liever
+                direct contact? Bel{" "}
+                <a className="text-foreground underline" href={`tel:${site.phoneTel}`}>
+                  {site.phoneDisplay}
+                </a>
+                .
+              </>
+            ) : (
+              <>
+                Bedankt. Je aanvraag is verstuurd en je ontvangt zo meteen een bevestiging per
+                e-mail. We nemen zo snel mogelijk contact met je op. Liever direct contact? Bel{" "}
+                <a className="text-foreground underline" href={`tel:${site.phoneTel}`}>
+                  {site.phoneDisplay}
+                </a>
+                .
+              </>
+            )}
+          </p>
+          {partialWarning ? (
+            <p className="text-sm text-amber-800 dark:text-amber-200" role="status">
+              {partialWarning}
+            </p>
+          ) : null}
+          <p>
+            <button
+              type="button"
+              className="text-sm font-medium text-foreground underline underline-offset-4"
+              onClick={() => {
+                setState("idle");
+                setPartialWarning(null);
+              }}
+            >
+              Nieuwe aanvraag
+            </button>
+          </p>
+        </>
+      ) : null}
+
+      {state === "error" && error ? (
+        <p className="text-sm text-red-700 dark:text-red-400" role="alert">
+          {error}
         </p>
       ) : null}
+
+      <div className="hidden" aria-hidden="true">
+        <label>
+          Laat dit leeg
+          <input type="text" name="_hp" tabIndex={-1} autoComplete="off" />
+        </label>
+      </div>
 
       <div className="grid gap-6 sm:grid-cols-2">
         <label className="grid gap-2 text-sm">
@@ -75,7 +149,8 @@ export function ContactForm() {
             required
             name="name"
             autoComplete="name"
-            className="border border-black/15 bg-background px-3 py-2.5 text-foreground outline-none ring-0 focus:border-foreground/40"
+            disabled={state === "sending" || state === "sent"}
+            className="border border-black/15 bg-background px-3 py-2.5 text-foreground outline-none ring-0 focus:border-foreground/40 disabled:opacity-60"
           />
         </label>
         <label className="grid gap-2 text-sm">
@@ -85,7 +160,8 @@ export function ContactForm() {
             type="email"
             name="email"
             autoComplete="email"
-            className="border border-black/15 bg-background px-3 py-2.5 text-foreground outline-none focus:border-foreground/40"
+            disabled={state === "sending" || state === "sent"}
+            className="border border-black/15 bg-background px-3 py-2.5 text-foreground outline-none focus:border-foreground/40 disabled:opacity-60"
           />
         </label>
         <label className="grid gap-2 text-sm">
@@ -94,7 +170,8 @@ export function ContactForm() {
             name="phone"
             type="tel"
             autoComplete="tel"
-            className="border border-black/15 bg-background px-3 py-2.5 text-foreground outline-none focus:border-foreground/40"
+            disabled={state === "sending" || state === "sent"}
+            className="border border-black/15 bg-background px-3 py-2.5 text-foreground outline-none focus:border-foreground/40 disabled:opacity-60"
           />
         </label>
         <label className="grid gap-2 text-sm">
@@ -102,7 +179,8 @@ export function ContactForm() {
           <select
             required
             name="projectType"
-            className="border border-black/15 bg-background px-3 py-2.5 text-foreground outline-none focus:border-foreground/40"
+            disabled={state === "sending" || state === "sent"}
+            className="border border-black/15 bg-background px-3 py-2.5 text-foreground outline-none focus:border-foreground/40 disabled:opacity-60"
             defaultValue=""
           >
             <option value="" disabled>
@@ -121,7 +199,8 @@ export function ContactForm() {
             required
             name="location"
             autoComplete="address-level2"
-            className="border border-black/15 bg-background px-3 py-2.5 text-foreground outline-none focus:border-foreground/40"
+            disabled={state === "sending" || state === "sent"}
+            className="border border-black/15 bg-background px-3 py-2.5 text-foreground outline-none focus:border-foreground/40 disabled:opacity-60"
           />
         </label>
         <label className="grid gap-2 text-sm sm:col-span-2">
@@ -129,7 +208,8 @@ export function ContactForm() {
           <select
             required
             name="timing"
-            className="border border-black/15 bg-background px-3 py-2.5 text-foreground outline-none focus:border-foreground/40"
+            disabled={state === "sending" || state === "sent"}
+            className="border border-black/15 bg-background px-3 py-2.5 text-foreground outline-none focus:border-foreground/40 disabled:opacity-60"
             defaultValue=""
           >
             <option value="" disabled>
@@ -150,13 +230,20 @@ export function ContactForm() {
           required
           name="message"
           rows={5}
-          className="resize-y border border-black/15 bg-background px-3 py-2.5 text-foreground outline-none focus:border-foreground/40"
+          disabled={state === "sending" || state === "sent"}
+          className="resize-y border border-black/15 bg-background px-3 py-2.5 text-foreground outline-none focus:border-foreground/40 disabled:opacity-60"
           placeholder="Beschrijf kort je project, de ruimte en wat je zoekt. Eventueel met referenties of inspiratie."
         />
       </label>
 
       <label className="flex items-start gap-3 text-xs text-muted">
-        <input type="checkbox" required name="privacy" className="mt-1" />
+        <input
+          type="checkbox"
+          required
+          name="privacy"
+          disabled={state === "sending" || state === "sent"}
+          className="mt-1 disabled:opacity-60"
+        />
         <span>
           Ik ga akkoord met de verwerking van mijn gegevens zoals beschreven in het{" "}
           <a href="/privacy" className="text-foreground underline">
@@ -168,9 +255,10 @@ export function ContactForm() {
 
       <button
         type="submit"
-        className="min-h-11 bg-accent px-6 text-xs font-semibold uppercase tracking-[0.22em] text-accent-foreground transition hover:brightness-95"
+        disabled={state === "sending" || state === "sent"}
+        className="min-h-11 bg-accent px-6 text-xs font-semibold uppercase tracking-[0.22em] text-accent-foreground transition enabled:hover:brightness-95 disabled:cursor-not-allowed disabled:opacity-60"
       >
-        Verstuur aanvraag
+        {state === "sending" ? "Bezig met verzenden…" : "Verstuur aanvraag"}
       </button>
     </form>
   );
