@@ -50,9 +50,15 @@ export async function POST(req: Request) {
     return Response.json({ ok: true });
   }
 
-  const apiKey = process.env.RESEND_API_KEY;
-  const from = process.env.CONTACT_FROM_EMAIL?.trim();
-  const to = process.env.CONTACT_TO_EMAIL?.trim() ?? site.email;
+  const stripQuotes = (v: string) => v.replace(/^["']+|["']+$/g, "").trim();
+  const apiKey = process.env.RESEND_API_KEY
+    ? stripQuotes(process.env.RESEND_API_KEY.trim())
+    : "";
+  const from = process.env.CONTACT_FROM_EMAIL
+    ? stripQuotes(process.env.CONTACT_FROM_EMAIL.trim())
+    : "";
+  const toEnv = process.env.CONTACT_TO_EMAIL?.trim();
+  const to = toEnv ? stripQuotes(toEnv) : site.email;
 
   if (!apiKey) {
     console.error("RESEND_API_KEY is not set");
@@ -151,31 +157,58 @@ export async function POST(req: Request) {
 
   const notifySubject = `Website: aanvraag van ${name}`;
 
-  const [notifyResult, confirmResult] = await Promise.all([
-    resend.emails.send({
-      from,
-      to: [to],
-      replyTo: email,
-      subject: notifySubject,
-      html: studioHtml,
-      text: studioText,
-    }),
-    resend.emails.send({
-      from,
-      to: [email],
-      subject: confirmSubject,
-      html: confirmHtml,
-      text: confirmText,
-    }),
-  ]);
+  type SendErr =
+    | { name?: string | null; message?: string | null; statusCode?: number | null }
+    | undefined;
+  type EmailSendResult = Awaited<ReturnType<typeof resend.emails.send>>;
+  let notifyResult: EmailSendResult;
+  let confirmResult: EmailSendResult;
+  try {
+    [notifyResult, confirmResult] = await Promise.all([
+      resend.emails.send({
+        from,
+        to: [to],
+        replyTo: email,
+        subject: notifySubject,
+        html: studioHtml,
+        text: studioText,
+      }),
+      resend.emails.send({
+        from,
+        to: [email],
+        subject: confirmSubject,
+        html: confirmHtml,
+        text: confirmText,
+      }),
+    ]);
+  } catch (err) {
+    console.error("Resend threw:", err);
+    return Response.json(
+      {
+        error: "Het verzenden is mislukt. Probeer later opnieuw of bel ons.",
+        code: "RESEND_EXCEPTION",
+      },
+      { status: 502 },
+    );
+  }
 
   const notifyErr = notifyResult.error;
   const confirmErr = confirmResult.error;
 
+  const resendDetail = (e: SendErr) =>
+    e?.message ?? e?.name ?? (e?.statusCode != null ? `HTTP ${e.statusCode}` : undefined);
+
   if (notifyErr && confirmErr) {
     console.error("Resend errors:", notifyErr, confirmErr);
     return Response.json(
-      { error: "Het verzenden is mislukt. Probeer later opnieuw of bel ons." },
+      {
+        error: "Het verzenden is mislukt. Probeer later opnieuw of bel ons.",
+        code: "RESEND_BOTH_FAILED",
+        hints: [
+          resendDetail(notifyErr) && `Studio-mail: ${resendDetail(notifyErr)}`,
+          resendDetail(confirmErr) && `Bevestigingsmail: ${resendDetail(confirmErr)}`,
+        ].filter(Boolean),
+      },
       { status: 502 },
     );
   }

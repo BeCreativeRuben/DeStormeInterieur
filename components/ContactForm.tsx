@@ -20,11 +20,13 @@ const timings = [
 export function ContactForm() {
   const [state, setState] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [error, setError] = useState<string | null>(null);
+  const [errorHints, setErrorHints] = useState<string[] | null>(null);
   const [partialWarning, setPartialWarning] = useState<string | null>(null);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setError(null);
+    setErrorHints(null);
     setPartialWarning(null);
     setState("sending");
 
@@ -52,6 +54,8 @@ export function ContactForm() {
         ok?: boolean;
         error?: string;
         partial?: boolean;
+        code?: string;
+        hints?: string[];
       };
 
       if (res.ok && json.ok) {
@@ -69,6 +73,7 @@ export function ContactForm() {
 
       if (json.error) {
         setError(json.error);
+        setErrorHints(Array.isArray(json.hints) && json.hints.length ? json.hints : null);
         setState("error");
         return;
       }
@@ -130,9 +135,20 @@ export function ContactForm() {
       ) : null}
 
       {state === "error" && error ? (
-        <p className="text-sm text-red-700 dark:text-red-400" role="alert">
-          {error}
-        </p>
+        <div className="text-sm text-red-700 dark:text-red-400" role="alert">
+          <p>{error}</p>
+          {errorHints?.length ? (
+            <ul className="mt-2 list-disc pl-5 text-xs opacity-95">
+              {errorHints.map((h) => (
+                <li key={h}>{h}</li>
+              ))}
+            </ul>
+          ) : null}
+          <p className="mt-3 text-xs text-muted">
+            Blijft dit gebeuren? Controleer in Resend dat je domein geverifieerd is en dat het
+            afzenderadres (Vercel-omgevingsvariabele) daar exact bij past.
+          </p>
+        </div>
       ) : null}
 
       <div className="hidden" aria-hidden="true">
