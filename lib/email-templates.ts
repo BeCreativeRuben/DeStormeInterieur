@@ -95,8 +95,7 @@ export function buildConfirmationEmail(params: {
   const inner = `
 <p style="margin:0 0 20px;font-size:11px;font-weight:600;letter-spacing:0.28em;text-transform:uppercase;color:${muted}">Bevestiging aanvraag</p>
 <p style="margin:0 0 16px;font-size:20px;font-weight:600;line-height:1.3;color:${fg};letter-spacing:0.08em;text-transform:uppercase">Bedankt, ${escapeHtml(firstName)}</p>
-<p style="margin:0 0 16px">Je aanvraag is goed bij ons binnengekomen. We bekijken je bericht persoonlijk en nemen <strong style="font-weight:600;color:${fg}">zo snel mogelijk contact</strong> met je op, doorgaans binnen <strong style="font-weight:600;color:${fg}">twee werkdagen</strong>.</p>
-<p style="margin:0 0 28px;padding:14px 16px;background:${bg};border-left:3px solid ${accent};font-size:14px;color:${muted}">Controleer je inbox voor updates. Als je niets ziet binnen een paar minuten, bekijk ook je spam- of reclame-tab.</p>
+<p style="margin:0 0 28px">Je aanvraag is goed bij ons binnengekomen. We bekijken je bericht persoonlijk en nemen <strong style="font-weight:600;color:${fg}">zo snel mogelijk contact</strong> met je op, doorgaans binnen <strong style="font-weight:600;color:${fg}">twee werkdagen</strong>.</p>
 <p style="margin:0;font-size:15px;line-height:1.6">Met vriendelijke groet,</p>
 <p style="margin:8px 0 0;font-size:14px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:${fg}">${escapeHtml(site.title)}</p>
 `;
