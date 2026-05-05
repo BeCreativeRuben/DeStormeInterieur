@@ -1,4 +1,5 @@
 import { Resend } from "resend";
+import { buildConfirmationEmail, buildStudioNotificationEmail } from "@/lib/email-templates";
 import { site } from "@/lib/site";
 
 export const runtime = "nodejs";
@@ -28,14 +29,6 @@ type Body = {
 function trim(s: unknown, max: number): string {
   const t = typeof s === "string" ? s.trim() : "";
   return t.slice(0, max);
-}
-
-function escapeHtml(s: string): string {
-  return s
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
 }
 
 export async function POST(req: Request) {
@@ -117,43 +110,14 @@ export async function POST(req: Request) {
     ["Timing", timing],
   ];
 
-  const studioHtml = `
-    <p>Nieuwe aanvraag via de website <strong>${escapeHtml(site.title)}</strong>.</p>
-    <table style="border-collapse:collapse;max-width:560px">
-      ${rows
-        .map(
-          ([k, v]) =>
-            `<tr><td style="padding:6px 12px 6px 0;vertical-align:top;font-weight:600">${escapeHtml(k)}</td><td style="padding:6px 0">${escapeHtml(v)}</td></tr>`,
-        )
-        .join("")}
-    </table>
-    <p style="margin-top:16px;font-weight:600">Bericht</p>
-    <p style="white-space:pre-wrap;margin:0">${escapeHtml(message)}</p>
-  `;
-
-  const studioText = [
-    `Nieuwe aanvraag via ${site.title}`,
-    "",
-    ...rows.map(([k, v]) => `${k}: ${v}`),
-    "",
-    "Bericht:",
+  const { html: studioHtml, text: studioText } = buildStudioNotificationEmail({
+    rows,
     message,
-  ].join("\n");
+  });
 
   const confirmSubject = `We hebben je aanvraag ontvangen — ${site.title}`;
-  const confirmHtml = `
-    <p>Beste ${escapeHtml(name.split(/\s+/)[0] ?? name)},</p>
-    <p>Bedankt voor je aanvraag. We hebben je bericht goed ontvangen en nemen zo snel mogelijk contact met je op, doorgaans binnen twee werkdagen.</p>
-    <p style="margin-top:20px">Met vriendelijke groet,<br><strong>${escapeHtml(site.title)}</strong></p>
-  `;
-  const confirmText = [
-    `Beste ${name.split(/\s+/)[0] ?? name},`,
-    "",
-    "Bedankt voor je aanvraag. We hebben je bericht goed ontvangen en nemen zo snel mogelijk contact met je op, doorgaans binnen twee werkdagen.",
-    "",
-    `Met vriendelijke groet,`,
-    site.title,
-  ].join("\n");
+  const firstName = name.split(/\s+/)[0] ?? name;
+  const { html: confirmHtml, text: confirmText } = buildConfirmationEmail({ firstName });
 
   const notifySubject = `Website: aanvraag van ${name}`;
 
