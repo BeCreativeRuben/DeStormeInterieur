@@ -11,24 +11,36 @@ const montserrat = Montserrat({
   weight: ["300", "400", "500", "600", "700"],
 });
 
+const defaultTitle = `${site.title} — ${site.tagline}`;
+const ogImage = {
+  url: "/og-image.png",
+  width: 1200,
+  height: 630,
+  alt: `${site.title} — ${site.tagline}`,
+} as const;
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  icons: {
-    icon: [{ url: "/brand-mark.png", type: "image/png" }],
-    shortcut: "/brand-mark.png",
-    apple: "/brand-mark.png",
-  },
   title: {
-    default: `${site.title} — ${site.tagline}`,
+    default: defaultTitle,
     template: `%s | ${site.title}`,
   },
   description: site.description,
+  applicationName: site.title,
   openGraph: {
     type: "website",
     locale: site.locale,
+    url: siteUrl,
     siteName: site.title,
-    title: `${site.title} — ${site.tagline}`,
+    title: defaultTitle,
     description: site.description,
+    images: [ogImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: defaultTitle,
+    description: site.description,
+    images: [ogImage.url],
   },
 };
 
