@@ -243,19 +243,19 @@ export function ContactForm() {
       <div ref={successAnchorRef} className="-mt-1 scroll-mt-24">
         {state === "sent" ? (
           <div
-            className={`border-2 px-5 py-4 sm:px-6 sm:py-5 ${
-              partialWarning
-                ? "border-amber-400/80 bg-amber-50 text-foreground"
-                : "border-emerald-500/55 bg-emerald-50/[0.65] text-foreground"
+            className={`border border-black/10 bg-surface px-5 py-6 sm:px-7 sm:py-7 shadow-sm ${
+              partialWarning ? "border-t-4 border-t-amber-500/90" : "border-t-4 border-t-accent"
             }`}
             role="status"
             aria-live="polite"
             aria-labelledby="contact-success-heading"
           >
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-5">
+            <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:gap-6">
               <div
-                className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full ${
-                  partialWarning ? "bg-amber-200/80 text-amber-950" : "bg-emerald-500 text-white"
+                className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full ring-1 ring-black/10 ${
+                  partialWarning
+                    ? "bg-foreground text-amber-300"
+                    : "bg-foreground text-accent"
                 }`}
                 aria-hidden
               >
@@ -269,37 +269,44 @@ export function ContactForm() {
                   </svg>
                 )}
               </div>
-              <div className="min-w-0 flex-1 space-y-2">
-                <h2 id="contact-success-heading" className="text-base font-semibold uppercase tracking-[0.14em] sm:text-lg">
-                  {partialWarning ? "Bericht verwerkt" : "Verstuurd — je aanvraag is binnen"}
+              <div className="min-w-0 flex-1 space-y-3">
+                <p className="text-[0.65rem] font-medium uppercase tracking-[0.35em] text-muted">
+                  {partialWarning ? "Let op" : "Aanvraag verzonden"}
+                </p>
+                <h2
+                  id="contact-success-heading"
+                  className="font-semibold uppercase tracking-[0.14em] text-lg text-foreground sm:text-xl"
+                >
+                  {partialWarning ? "Bericht verwerkt" : "Je aanvraag is binnen"}
                 </h2>
                 {partialWarning ? (
                   <>
-                    <p className="text-sm leading-relaxed text-foreground/90">
+                    <p className="text-sm leading-relaxed text-muted">
                       Je bericht werd verwerkt. Lees hieronder de opmerking. Vragen? Bel{" "}
-                      <a className="font-medium underline underline-offset-2" href={`tel:${site.phoneTel}`}>
+                      <a className="font-medium text-foreground underline underline-offset-4" href={`tel:${site.phoneTel}`}>
                         {site.phoneDisplay}
                       </a>
                       .
                     </p>
-                    <p className="text-sm font-medium leading-relaxed text-amber-950">{partialWarning}</p>
+                    <p className="border-l-2 border-amber-500/80 bg-black/[0.02] py-2 pl-4 text-sm font-medium leading-relaxed text-foreground">
+                      {partialWarning}
+                    </p>
                   </>
                 ) : (
-                  <p className="text-sm leading-relaxed text-foreground/90">
+                  <p className="text-sm leading-relaxed text-muted sm:text-base">
                     Het formulier is succesvol verstuurd naar de studio. Je ontvangt{" "}
-                    <strong className="font-semibold text-foreground">direct een bevestiging per e-mail</strong>{" "}
-                    op het adres dat je hierboven ingaf. Check ook je spam-map. We antwoorden doorgaans binnen twee
-                    werkdagen — liever nu al iets kwijt?{" "}
-                    <a className="font-medium underline underline-offset-2" href={`tel:${site.phoneTel}`}>
+                    <strong className="font-medium text-foreground">een bevestiging per e-mail</strong> op het adres
+                    dat je invulde. We antwoorden doorgaans binnen twee werkdagen — liever nu al iets kwijt?{" "}
+                    <a className="font-medium text-foreground underline underline-offset-4" href={`tel:${site.phoneTel}`}>
                       Bel {site.phoneDisplay}
                     </a>
                     .
                   </p>
                 )}
-                <p className="pt-2">
+                <p className="pt-1">
                   <button
                     type="button"
-                    className="text-xs font-semibold uppercase tracking-[0.18em] text-foreground underline underline-offset-[3px]"
+                    className="min-h-10 border border-black/20 bg-transparent px-5 text-xs font-semibold uppercase tracking-[0.2em] text-foreground transition hover:border-foreground/40 hover:bg-black/[0.03]"
                     onClick={() => {
                       setState("idle");
                       setPartialWarning(null);
