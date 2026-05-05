@@ -57,14 +57,20 @@ export async function POST(req: Request) {
   if (!apiKey) {
     console.error("RESEND_API_KEY is not set");
     return Response.json(
-      { error: "E-mail is tijdelijk niet beschikbaar. Probeer later opnieuw of bel ons." },
+      {
+        error: "E-mail is tijdelijk niet beschikbaar. Probeer later opnieuw of bel ons.",
+        code: "MISSING_RESEND_API_KEY",
+      },
       { status: 503 },
     );
   }
   if (!from) {
     console.error("CONTACT_FROM_EMAIL is not set");
     return Response.json(
-      { error: "E-mail is tijdelijk niet beschikbaar. Probeer later opnieuw of bel ons." },
+      {
+        error: "E-mail is tijdelijk niet beschikbaar. Probeer later opnieuw of bel ons.",
+        code: "MISSING_CONTACT_FROM_EMAIL",
+      },
       { status: 503 },
     );
   }
