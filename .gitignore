@@ -41,4 +41,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# Projectbeelden: alleen WebP in *2-mappen (PNG niet meer committen)
+/public/projects/badkamer2/*.png
+/public/projects/batoo2/*.png
+/public/projects/bureau2/*.png
+/public/projects/zolder2/*.png
+
 .vercel

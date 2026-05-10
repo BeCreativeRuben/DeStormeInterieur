@@ -30,13 +30,13 @@ export const projects: Project[] = [
     year: "2026",
     excerpt:
       "Een rustige werkplek met voldoende opbergruimte, zonder visuele drukte.",
-    hero: p("/projects/bureau2/Scene 4.png"),
+    hero: p("/projects/bureau2/Scene 4.webp"),
     gallery: [
-      p("/projects/bureau2/Scene 4.png"),
-      p("/projects/bureau2/Image 1.png"),
-      p("/projects/bureau2/Image_2.png"),
-      p("/projects/bureau2/Image_3.png"),
-      p("/projects/bureau2/Scene 5.png"),
+      p("/projects/bureau2/Scene 4.webp"),
+      p("/projects/bureau2/Image 1.webp"),
+      p("/projects/bureau2/Image_2.webp"),
+      p("/projects/bureau2/Image_3.webp"),
+      p("/projects/bureau2/Scene 5.webp"),
     ],
     context: {
       challenge:
@@ -55,13 +55,13 @@ export const projects: Project[] = [
     year: "2026",
     excerpt:
       "Een nieuwe zitzone die sfeer en privacy brengt zonder de ruimte af te sluiten.",
-    hero: p("/projects/batoo2/finalScene 1.png"),
+    hero: p("/projects/batoo2/finalScene 1.webp"),
     gallery: [
-      p("/projects/batoo2/finalScene 1.png"),
-      p("/projects/batoo2/finalScene 2.png"),
-      p("/projects/batoo2/finalScene 3.png"),
-      p("/projects/batoo2/finalScene 4.png"),
-      p("/projects/batoo2/finalScene 5.png"),
+      p("/projects/batoo2/finalScene 1.webp"),
+      p("/projects/batoo2/finalScene 2.webp"),
+      p("/projects/batoo2/finalScene 3.webp"),
+      p("/projects/batoo2/finalScene 4.webp"),
+      p("/projects/batoo2/finalScene 5.webp"),
     ],
     context: {
       challenge:
@@ -81,19 +81,19 @@ export const projects: Project[] = [
     year: "2026",
     excerpt:
       "Een rustige multifunctionele zolder met maatwerk op maat van het schuine dak.",
-    hero: p("/projects/zolder2/bob_zolder_2Scene 1_1 2.png"),
+    hero: p("/projects/zolder2/bob_zolder_2Scene 1_1 2.webp"),
     gallery: [
-      p("/projects/zolder2/bob_zolder_2Scene 1_1 2.png"),
-      p("/projects/zolder2/bob_zolder_2Scene 2_1 2.png"),
-      p("/projects/zolder2/bob_zolder_2Scene 4_1 2.png"),
-      p("/projects/zolder2/bob_zolder_2Scene 7_1 2.png"),
-      p("/projects/zolder2/bob_zolder_2Scene 8_1 2.png"),
-      p("/projects/zolder2/bob_zolder_2Scene 10_1 3.png"),
-      p("/projects/zolder2/bob_zolder_2Scene 11_1 4.png"),
-      p("/projects/zolder2/bob_zolder_2Image_1 4.png"),
-      p("/projects/zolder2/bob_zolder_2Image_2 1.png"),
-      p("/projects/zolder2/bob_zolder_2Image_3 2.png"),
-      p("/projects/zolder2/bob_zolder_2Image_4 2.png"),
+      p("/projects/zolder2/bob_zolder_2Scene 1_1 2.webp"),
+      p("/projects/zolder2/bob_zolder_2Scene 2_1 2.webp"),
+      p("/projects/zolder2/bob_zolder_2Scene 4_1 2.webp"),
+      p("/projects/zolder2/bob_zolder_2Scene 7_1 2.webp"),
+      p("/projects/zolder2/bob_zolder_2Scene 8_1 2.webp"),
+      p("/projects/zolder2/bob_zolder_2Scene 10_1 3.webp"),
+      p("/projects/zolder2/bob_zolder_2Scene 11_1 4.webp"),
+      p("/projects/zolder2/bob_zolder_2Image_1 4.webp"),
+      p("/projects/zolder2/bob_zolder_2Image_2 1.webp"),
+      p("/projects/zolder2/bob_zolder_2Image_3 2.webp"),
+      p("/projects/zolder2/bob_zolder_2Image_4 2.webp"),
     ],
     context: {
       challenge:
@@ -113,13 +113,13 @@ export const projects: Project[] = [
     year: "2026",
     excerpt:
       "Een tijdloze badkamer met ton-sur-ton kleuren en maatwerk in compacte ruimte.",
-    hero: p("/projects/badkamer2/Scene 3.png"),
+    hero: p("/projects/badkamer2/Scene 3.webp"),
     gallery: [
-      p("/projects/badkamer2/Scene 1.png"),
-      p("/projects/badkamer2/Scene 2.png"),
-      p("/projects/badkamer2/Scene 4 2.png"),
-      p("/projects/badkamer2/Scene 5_1.png"),
-      p("/projects/badkamer2/Scene 6_1.png"),
+      p("/projects/badkamer2/Scene 1.webp"),
+      p("/projects/badkamer2/Scene 2.webp"),
+      p("/projects/badkamer2/Scene 4 2.webp"),
+      p("/projects/badkamer2/Scene 5_1.webp"),
+      p("/projects/badkamer2/Scene 6_1.webp"),
     ],
     context: {
       challenge:
