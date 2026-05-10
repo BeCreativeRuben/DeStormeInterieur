@@ -15,6 +15,12 @@ export type Project = {
   collaboration?: string;
 };
 
+/** Encode alleen het bestandsdeel zodat spaties in publieke paden correct werken. */
+function p(path: string): string {
+  const i = path.lastIndexOf("/");
+  return path.slice(0, i + 1) + encodeURIComponent(path.slice(i + 1));
+}
+
 export const projects: Project[] = [
   {
     slug: "maatwerk-bureau",
@@ -24,13 +30,13 @@ export const projects: Project[] = [
     year: "2026",
     excerpt:
       "Een rustige werkplek met voldoende opbergruimte, zonder visuele drukte.",
-    hero: "/projects/bureau2/hero.png",
+    hero: p("/projects/bureau2/Scene 4.png"),
     gallery: [
-      "/projects/bureau2/hero.png",
-      "/projects/bureau2/03.png",
-      "/projects/bureau2/02.png",
-      "/projects/bureau2/06.png",
-      "/projects/bureau2/05.png",
+      p("/projects/bureau2/Scene 4.png"),
+      p("/projects/bureau2/Image 1.png"),
+      p("/projects/bureau2/Image_2.png"),
+      p("/projects/bureau2/Image_3.png"),
+      p("/projects/bureau2/Scene 5.png"),
     ],
     context: {
       challenge:
@@ -49,12 +55,13 @@ export const projects: Project[] = [
     year: "2026",
     excerpt:
       "Een nieuwe zitzone die sfeer en privacy brengt zonder de ruimte af te sluiten.",
-    hero: "/projects/batoo2/hero.png",
+    hero: p("/projects/batoo2/finalScene 1.png"),
     gallery: [
-      "/projects/batoo2/hero.png",
-      "/projects/batoo2/01.png",
-      "/projects/batoo2/02.png",
-      "/projects/batoo2/05.png",
+      p("/projects/batoo2/finalScene 1.png"),
+      p("/projects/batoo2/finalScene 2.png"),
+      p("/projects/batoo2/finalScene 3.png"),
+      p("/projects/batoo2/finalScene 4.png"),
+      p("/projects/batoo2/finalScene 5.png"),
     ],
     context: {
       challenge:
@@ -74,14 +81,19 @@ export const projects: Project[] = [
     year: "2026",
     excerpt:
       "Een rustige multifunctionele zolder met maatwerk op maat van het schuine dak.",
-    hero: "/projects/zolder2/05.png",
+    hero: p("/projects/zolder2/bob_zolder_2Scene 1_1 2.png"),
     gallery: [
-      "/projects/zolder2/05.png",
-      "/projects/zolder2/10.png",
-      "/projects/zolder2/06.png",
-      "/projects/zolder2/03.png",
-      "/projects/zolder2/07.png",
-      "/projects/zolder2/04.png",
+      p("/projects/zolder2/bob_zolder_2Scene 1_1 2.png"),
+      p("/projects/zolder2/bob_zolder_2Scene 2_1 2.png"),
+      p("/projects/zolder2/bob_zolder_2Scene 4_1 2.png"),
+      p("/projects/zolder2/bob_zolder_2Scene 7_1 2.png"),
+      p("/projects/zolder2/bob_zolder_2Scene 8_1 2.png"),
+      p("/projects/zolder2/bob_zolder_2Scene 10_1 3.png"),
+      p("/projects/zolder2/bob_zolder_2Scene 11_1 4.png"),
+      p("/projects/zolder2/bob_zolder_2Image_1 4.png"),
+      p("/projects/zolder2/bob_zolder_2Image_2 1.png"),
+      p("/projects/zolder2/bob_zolder_2Image_3 2.png"),
+      p("/projects/zolder2/bob_zolder_2Image_4 2.png"),
     ],
     context: {
       challenge:
@@ -101,14 +113,13 @@ export const projects: Project[] = [
     year: "2026",
     excerpt:
       "Een tijdloze badkamer met ton-sur-ton kleuren en maatwerk in compacte ruimte.",
-    hero: "/projects/badkamer2/new-03.png",
+    hero: p("/projects/badkamer2/Scene 3.png"),
     gallery: [
-      "/projects/badkamer2/new-03.png",
-      "/projects/badkamer2/new-01.png",
-      "/projects/badkamer2/new-02.png",
-      "/projects/badkamer2/new-06.png",
-      "/projects/badkamer2/new-04.png",
-      "/projects/badkamer2/new-05.png",
+      p("/projects/badkamer2/Scene 1.png"),
+      p("/projects/badkamer2/Scene 2.png"),
+      p("/projects/badkamer2/Scene 4 2.png"),
+      p("/projects/badkamer2/Scene 5_1.png"),
+      p("/projects/badkamer2/Scene 6_1.png"),
     ],
     context: {
       challenge:
