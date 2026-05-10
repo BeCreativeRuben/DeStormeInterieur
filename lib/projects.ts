@@ -24,13 +24,13 @@ export const projects: Project[] = [
     year: "2026",
     excerpt:
       "Een rustige werkplek met voldoende opbergruimte, zonder visuele drukte.",
-    hero: "/projects/bureau/hero.png",
+    hero: "/projects/bureau2/hero.png",
     gallery: [
-      "/projects/bureau/hero.png",
-      "/projects/bureau/03.png",
-      "/projects/bureau/02.png",
-      "/projects/bureau/06.png",
-      "/projects/bureau/05.png",
+      "/projects/bureau2/hero.png",
+      "/projects/bureau2/03.png",
+      "/projects/bureau2/02.png",
+      "/projects/bureau2/06.png",
+      "/projects/bureau2/05.png",
     ],
     context: {
       challenge:
@@ -49,12 +49,12 @@ export const projects: Project[] = [
     year: "2026",
     excerpt:
       "Een nieuwe zitzone die sfeer en privacy brengt zonder de ruimte af te sluiten.",
-    hero: "/projects/batoo/hero.png",
+    hero: "/projects/batoo2/hero.png",
     gallery: [
-      "/projects/batoo/hero.png",
-      "/projects/batoo/01.png",
-      "/projects/batoo/02.png",
-      "/projects/batoo/05.png",
+      "/projects/batoo2/hero.png",
+      "/projects/batoo2/01.png",
+      "/projects/batoo2/02.png",
+      "/projects/batoo2/05.png",
     ],
     context: {
       challenge:
@@ -74,14 +74,14 @@ export const projects: Project[] = [
     year: "2026",
     excerpt:
       "Een rustige multifunctionele zolder met maatwerk op maat van het schuine dak.",
-    hero: "/projects/zolder/05.png",
+    hero: "/projects/zolder2/05.png",
     gallery: [
-      "/projects/zolder/05.png",
-      "/projects/zolder/10.png",
-      "/projects/zolder/06.png",
-      "/projects/zolder/03.png",
-      "/projects/zolder/07.png",
-      "/projects/zolder/04.png",
+      "/projects/zolder2/05.png",
+      "/projects/zolder2/10.png",
+      "/projects/zolder2/06.png",
+      "/projects/zolder2/03.png",
+      "/projects/zolder2/07.png",
+      "/projects/zolder2/04.png",
     ],
     context: {
       challenge:
@@ -101,14 +101,14 @@ export const projects: Project[] = [
     year: "2026",
     excerpt:
       "Een tijdloze badkamer met ton-sur-ton kleuren en maatwerk in compacte ruimte.",
-    hero: "/projects/badkamer/new-03.png",
+    hero: "/projects/badkamer2/new-03.png",
     gallery: [
-      "/projects/badkamer/new-03.png",
-      "/projects/badkamer/new-01.png",
-      "/projects/badkamer/new-02.png",
-      "/projects/badkamer/new-06.png",
-      "/projects/badkamer/new-04.png",
-      "/projects/badkamer/new-05.png",
+      "/projects/badkamer2/new-03.png",
+      "/projects/badkamer2/new-01.png",
+      "/projects/badkamer2/new-02.png",
+      "/projects/badkamer2/new-06.png",
+      "/projects/badkamer2/new-04.png",
+      "/projects/badkamer2/new-05.png",
     ],
     context: {
       challenge:
