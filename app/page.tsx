@@ -7,7 +7,7 @@ import { site } from "@/lib/site";
 
 const featured = projects.slice(0, 3);
 
-/** Vaste hero op de homepage (kantoorbeeld). */
+/** Vaste hero op de homepage (kantoorbeeld). Gebruik bij voorkeur ≥2400px breed voor scherpe full-width weergave. */
 const homeHeroImage = "/hero-home.png";
 
 export default function HomePage() {
@@ -19,6 +19,7 @@ export default function HomePage() {
           alt=""
           fill
           priority
+          quality={100}
           className="object-cover opacity-85"
           sizes="100vw"
         />
