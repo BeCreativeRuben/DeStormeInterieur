@@ -7,21 +7,21 @@ import { site } from "@/lib/site";
 
 const featured = projects.slice(0, 3);
 
+/** Vaste hero op de homepage (kantoorbeeld). */
+const homeHeroImage = "/hero-home.png";
+
 export default function HomePage() {
-  const hero = featured[0];
   return (
     <>
       <section className="relative flex min-h-[min(88vh,820px)] items-end bg-foreground">
-        {hero ? (
-          <Image
-            src={hero.hero}
-            alt=""
-            fill
-            priority
-            className="object-cover opacity-85"
-            sizes="100vw"
-          />
-        ) : null}
+        <Image
+          src={homeHeroImage}
+          alt=""
+          fill
+          priority
+          className="object-cover opacity-85"
+          sizes="100vw"
+        />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent" />
         <div className="relative mx-auto w-full max-w-6xl px-5 pb-16 pt-32 text-white sm:px-8 sm:pb-20">
           <p className="text-[0.65rem] font-medium uppercase tracking-[0.4em] text-white/80">
