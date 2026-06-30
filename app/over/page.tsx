@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { ButtonLink } from "@/components/ButtonLink";
-import { projects } from "@/lib/projects";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -11,16 +10,15 @@ export const metadata: Metadata = {
 };
 
 export default function OverPage() {
-  const portrait = projects[1]?.hero ?? projects[0].hero;
   return (
     <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20">
       <div className="grid gap-14 lg:grid-cols-2 lg:items-start">
-        <div className="relative aspect-[4/5] w-full max-lg:max-h-[420px] bg-black/5 lg:sticky lg:top-24">
+        <div className="relative aspect-[4/5] w-full max-lg:max-h-[420px] bg-surface lg:sticky lg:top-24">
           <Image
-            src={portrait}
-            alt=""
+            src="/brand-mark.png"
+            alt="DESTORME DESIGN monogram"
             fill
-            className="object-cover"
+            className="object-contain p-10"
             sizes="(min-width: 1024px) 40vw, 100vw"
             priority
           />

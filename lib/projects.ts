@@ -23,6 +23,60 @@ function p(path: string): string {
 
 export const projects: Project[] = [
   {
+    slug: "hotelkamer",
+    title: "Hotelkamer",
+    location: "Concept",
+    type: "Concept - hotelkamer",
+    year: "2026",
+    excerpt:
+      "Een luxueuze totaalbeleving met warme materialen, open badkamer en maatwerk tot in detail.",
+    hero: p("/projects/hotelkamer2/Scene 1.webp"),
+    gallery: [
+      p("/projects/hotelkamer2/Scene 1.webp"),
+      p("/projects/hotelkamer2/Scene 2.webp"),
+      p("/projects/hotelkamer2/Scene 3.webp"),
+      p("/projects/hotelkamer2/Scene 4.webp"),
+    ],
+    context: {
+      challenge:
+        "Deze hotelkamer werd ontworpen als een luxueuze totaalbeleving waarin architectuur, materialen en sfeer naadloos samenkomen.",
+      approach:
+        "Warme eiken accenten, travertin, donker glas en indirecte verlichting zorgen voor een rustige, elegante uitstraling. De open badkamer vormt het centrale element van de ruimte en creëert een gevoel van luxe zonder aan privacy of functionaliteit in te boeten.",
+      result:
+        "Het volledige interieur werd uitgewerkt als maatwerk, met aandacht voor detail, materiaalbeleving en een tijdloze vormgeving.",
+    },
+    collaboration:
+      "Concept ontwikkeld als schoolproject binnen de opleiding Interieurdesign.",
+  },
+  {
+    slug: "keukenproject",
+    title: "Keukenproject",
+    location: "Belgie",
+    type: "3D-visualisatie - keuken",
+    year: "2026",
+    excerpt:
+      "Fotorealistische 3D-visualisaties van een tijdloos maatwerkkeukenconcept op basis van een aangeleverde indeling.",
+    hero: p("/projects/keukenproject2/Scene 1.webp"),
+    gallery: [
+      p("/projects/keukenproject2/Scene 1.webp"),
+      p("/projects/keukenproject2/Scene 2.webp"),
+      p("/projects/keukenproject2/Scene 3.webp"),
+      p("/projects/keukenproject2/Scene 4.webp"),
+      p("/projects/keukenproject2/Scene 5.webp"),
+      p("/projects/keukenproject2/Scene 6.webp"),
+    ],
+    context: {
+      challenge:
+        "Voor dit keukenproject werd een tijdloos maatwerkconcept uitgewerkt op basis van een aangeleverde indeling.",
+      approach:
+        "De materiaalkeuzes, afwerkingen en indeling werden bepaald door de opdrachtgever. Mijn rol bestond uit het technisch uitwerken van het ontwerp en het creëren van fotorealistische 3D-visualisaties die het project tot leven brengen.",
+      result:
+        "Door aandacht te besteden aan licht, materialen en details ontstaat een realistisch beeld van het uiteindelijke resultaat, nog vóór de uitvoering start.",
+    },
+    collaboration:
+      "3D-visualisatie gerealiseerd in opdracht van Coppens Interiors & BOB.",
+  },
+  {
     slug: "maatwerk-bureau",
     title: "Maatwerk Bureau",
     location: "Belgie",

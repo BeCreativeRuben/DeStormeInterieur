@@ -131,12 +131,12 @@ export default function HomePage() {
 
       <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div className="relative aspect-[4/5] max-h-[480px] bg-black/5 lg:max-h-none">
+          <div className="relative aspect-[4/5] max-h-[480px] bg-surface lg:max-h-none">
             <Image
-              src={featured[1]?.hero ?? featured[0].hero}
-              alt=""
+              src="/brand-mark.png"
+              alt="DESTORME DESIGN monogram"
               fill
-              className="object-cover"
+              className="object-contain p-10"
               sizes="(min-width: 1024px) 45vw, 100vw"
             />
           </div>
