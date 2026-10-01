@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { site, siteUrl } from "@/lib/site";
+import { gaMeasurementId, site, siteUrl } from "@/lib/site";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -56,6 +57,7 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <SiteFooter />
       </body>
+      <GoogleAnalytics gaId={gaMeasurementId} />
     </html>
   );
 }

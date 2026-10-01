@@ -1,6 +1,10 @@
 export const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://destormedesign.be";
 
+/** GA4 measurement ID. Override with NEXT_PUBLIC_GA_MEASUREMENT_ID. */
+export const gaMeasurementId =
+  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-8QRRNE3FBJ";
+
 export const site = {
   title: "DESTORME DESIGN",
   tagline: "Interior design studio",
