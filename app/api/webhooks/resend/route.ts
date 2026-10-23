@@ -29,21 +29,29 @@ export async function POST(req: Request) {
     return Response.json({ error: "Not configured" }, { status: 503 });
   }
 
+  const id = req.headers.get("svix-id") ?? "";
+  const timestamp = req.headers.get("svix-timestamp") ?? "";
+  const signature = req.headers.get("svix-signature") ?? "";
+  if (!id || !timestamp || !signature) {
+    return Response.json({ error: "Invalid signature" }, { status: 401 });
+  }
+
   const resend = new Resend(apiKey);
 
   let event;
   try {
     event = resend.webhooks.verify({
       payload: rawBody,
-      headers: {
-        id: req.headers.get("svix-id") ?? "",
-        timestamp: req.headers.get("svix-timestamp") ?? "",
-        signature: req.headers.get("svix-signature") ?? "",
-      },
+      headers: { id, timestamp, signature },
       webhookSecret,
     });
   } catch (err) {
     console.error("Resend webhook verification failed:", err);
+    return Response.json({ error: "Invalid signature" }, { status: 401 });
+  }
+
+  if (!event || typeof event !== "object" || typeof event.type !== "string") {
+    console.error("Resend webhook verification returned no event");
     return Response.json({ error: "Invalid signature" }, { status: 401 });
   }
 
@@ -64,6 +72,12 @@ export async function POST(req: Request) {
     : process.env.CONTACT_FROM_EMAIL
       ? stripQuotes(process.env.CONTACT_FROM_EMAIL.trim())
       : `DESTORME DESIGN <${DEFAULT_RECEIVE_ADDRESS}>`;
+
+  // Destination comes only from server configuration, never from the request.
+  if (!forwardTo || /[\r\n]/.test(forwardTo) || /[\r\n]/.test(forwardFrom)) {
+    console.error("Inbound forward address is not configured");
+    return Response.json({ error: "Not configured" }, { status: 503 });
+  }
 
   const recipients = [
     ...event.data.to,

@@ -17,8 +17,12 @@ const GONE_HTML = `<!DOCTYPE html>
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Keep inbound email forwarding webhook working.
-  if (pathname.startsWith("/api/webhooks/resend")) {
+  // Only the inbound Resend webhook stays open. Any other API path,
+  // including lookalikes under this prefix, fails closed.
+  if (
+    pathname === "/api/webhooks/resend" ||
+    pathname === "/api/webhooks/resend/"
+  ) {
     return NextResponse.next();
   }
 

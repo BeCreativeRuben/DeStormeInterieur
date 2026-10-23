@@ -9,6 +9,8 @@ const nextConfig: NextConfig = {
     root: turbopackRoot,
   },
   images: {
+    // SVG optimization is the CVE-2026-96889 sink. Keep it off (this is also the default).
+    dangerouslyAllowSVG: false,
     remotePatterns: [
       {
         protocol: "https",
